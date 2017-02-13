@@ -44,7 +44,7 @@ module Fastlane
         expected_changed_files << build_file_path
 
         # get the list of files that have actually changed in our git workdir
-       git_dirty_files = Actions.sh("cd '#{repo_path}'; git diff --name-only HEAD").split("\n") + Actions.sh("git '#{repo_path}'; git ls-files --other --exclude-standard").split("\n")
+       git_dirty_files = Actions.sh("cd '#{repo_path}'; git diff --name-only HEAD").split("\n") + Actions.sh("cd '#{repo_path}'; git ls-files --other --exclude-standard").split("\n")
 
        # little user hint
        UI.user_error!("No file changes picked up. Make sure you run the `increment_version_code` action first.") if git_dirty_files.empty?
